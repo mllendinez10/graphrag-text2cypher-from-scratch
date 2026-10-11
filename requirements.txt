@@ -2,3 +2,4 @@ neo4j
 python-dotenv
 pandas
 openpyxl
+ollama

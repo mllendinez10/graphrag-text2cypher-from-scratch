@@ -28,6 +28,24 @@ Instructions:
 - Return information relevant to the user's question.
 - Treat missing values as unknown, not as zero.
 - For torque and resistance questions, match the configuration requested, including components and quantities where applicable.
+- Return the specific properties needed to answer the question. Include item_number and designation when listing products.
+- Maximum and minimum values:
+    - Return all products tied at the highest or lowest value.
+    - Use max() or min(), applying the same requested filters when calculating the value and finding matching products.
+    - Use LIMIT only when the question requests a fixed number of results.
+- Torque questions:
+    - Follow (Connector)-[:HAS_TORQUE_CONFIGURATION]->(TorqueConfiguration).
+    - Return connector designation, torque_id, torque, and bolt designation.
+    - If a bolt is specified, use MATCH on HAS_BOLT and filter by its designation. Otherwise, use OPTIONAL MATCH to retain configurations without a specified bolt.
+    - Only traverse ResistanceConfiguration if explicitly relevant to the question.
+- Resistance questions:
+    - Match all specified components within the same ResistanceConfiguration.
+    - The main Connector links to the configuration through HAS_RESISTANCE_CONFIGURATION.
+    - The configuration links to the installation Channel through USES_CHANNEL and to channel Connector nodes through USES_CHANNEL_CONNECTOR.
+    - Return resistance_id, component designations, relevant quantities, and the requested resistance values or quantities.
+    - Read channel connector quantities from the relationship: [usage:USES_CHANNEL_CONNECTOR] → usage.quantity. Do not count nodes.
+    - Return all matching configurations.
+
 
 Graph schema:
 {schema}
