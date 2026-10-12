@@ -14,7 +14,6 @@ The goal is to gain hands-on experience with the main components of a Text-to-Cy
 * Data import into Neo4j
 * Prompt construction using the graph schema and user question
 * Cypher query generation with an LLM
-* Cypher validation and safety checks
 * Query execution against Neo4j
 * Query result processing
 * LLM answer generation
