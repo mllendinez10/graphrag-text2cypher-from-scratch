@@ -1,0 +1,269 @@
+[
+  {
+    "id": "Q001",
+    "category": "Filtering",
+    "difficulty": "easy",
+    "question": "What is the length for MT-30?",
+    "reference_cypher_query": "MATCH (c:Channel {designation: 'MT-30'}) RETURN c.length",
+    "expected_result": [[6]],
+    "expected_answer_content": {
+      "length": 6,
+      "unit": "m"
+    }
+  },
+  {
+    "id": "Q002",
+    "category": "Traversal",
+    "difficulty": "easy",
+    "question": "What is the material for MT-80 OC?",
+    "reference_cypher_query": "MATCH (c:Channel {designation: 'MT-80 OC'})-[:HAS_MATERIAL]->(m:Material) RETURN m.name",
+    "expected_result": [["S350GD"]],
+    "expected_answer_content": {
+      "material": "S350GD"
+    }
+  },
+  {
+    "id": "Q003",
+    "category": "Filtering",
+    "difficulty": "easy",
+    "question": "Which channels have a length of 6 m?",
+    "reference_cypher_query": "MATCH (c:Channel) WHERE c.length = 6 RETURN c.designation",
+    "expected_result": [
+      ["MT-30"],
+      ["MT-30 OC"],
+      ["MT-50"],
+      ["MT-50 OC"],
+      ["MT-50 U"],
+      ["MT-60"],
+      ["MT-60 OC"],
+      ["MT-30D"],
+      ["MT-30D OC"],
+      ["MT-40D"],
+      ["MT-40D OC"],
+      ["MT-50D"],
+      ["MT-50D U"],
+      ["MT-60D"],
+      ["MT-60D OC"],
+      ["MT-70 OC"],
+      ["MT-70 US OC"],
+      ["MT-80 OC"],
+      ["MT-90 OC"],
+      ["MT-90 US OC"],
+      ["MT-100 OC"],
+      ["MT-90H OC"]
+    ],
+    "expected_answer_content": {
+      "designation": [
+        "MT-30",
+        "MT-30 OC",
+        "MT-50",
+        "MT-50 OC",
+        "MT-50 U",
+        "MT-60",
+        "MT-60 OC",
+        "MT-30D",
+        "MT-30D OC",
+        "MT-40D",
+        "MT-40D OC",
+        "MT-50D",
+        "MT-50D U",
+        "MT-60D",
+        "MT-60D OC",
+        "MT-70 OC",
+        "MT-70 US OC",
+        "MT-80 OC",
+        "MT-90 OC",
+        "MT-90 US OC",
+        "MT-100 OC",
+        "MT-90H OC"
+      ]
+    }
+  },
+  {
+    "id": "Q004",
+    "category": "Filtering",
+    "difficulty": "easy",
+    "question": "What is the yield strength of MT-80 OC?",
+    "reference_cypher_query": "MATCH (c:Channel {designation: 'MT-80 OC'}) RETURN c.fy",
+    "expected_result": [[350]],
+    "expected_answer_content": {
+      "yield_strength": 350,
+      "unit": "MPa"
+    }
+  },
+  {
+    "id": "Q005",
+    "category": "Filtering",
+    "difficulty": "easy",
+    "question": "What is the St. Venant torsional constant of MT-70 S OC?",
+    "reference_cypher_query": "MATCH (c:Channel {designation: 'MT-70 S OC'}) RETURN c.j",
+    "expected_result": [[297456]],
+    "expected_answer_content": {
+      "st_venant_torsional_constant": 297456,
+      "unit": "mm^4"
+    }
+  },
+  {
+    "id": "Q006",
+    "category": "Traversal",
+    "difficulty": "easy",
+    "question": "What is the material of MT-FL OC?",
+    "reference_cypher_query": "MATCH (c:Connector {designation: 'MT-FL OC'})-[:HAS_MATERIAL]->(m:Material) RETURN m.name",
+    "expected_result": [["S460MC / Polypropylene"]],
+    "expected_answer_content": {
+      "material": "S460MC / Polypropylene"
+    }
+  },
+  {
+    "id": "Q007",
+    "category": "Traversal",
+    "difficulty": "easy",
+    "question": "Which connectors have material Q235B?",
+    "reference_cypher_query": "MATCH (c:Connector)-[:HAS_MATERIAL]->(m:Material {name: 'Q235B'}) RETURN c.designation",
+    "expected_result": [
+      ["MT-C-LL1"],
+      ["MT-C-LL1 OC"],
+      ["MT-C-LL1 FL"],
+      ["MT-C-LL1 FL OC"],
+      ["MT-CT-T"],
+      ["MT-CT-T OC"],
+      ["MT-C-LL2"],
+      ["MT-C-LL2 OC"],
+      ["MT-C-LL2 FL"],
+      ["MT-C-LL2 FL OC"],
+      ["MT-C-T/2"],
+      ["MT-C-T/2 OC"],
+      ["MT-C-T/2 FL"],
+      ["MT-C-T/2 FL OC"]
+    ],
+    "expected_answer_content": {
+      "designation": [
+        "MT-C-LL1",
+        "MT-C-LL1 OC",
+        "MT-C-LL1 FL",
+        "MT-C-LL1 FL OC",
+        "MT-CT-T",
+        "MT-CT-T OC",
+        "MT-C-LL2",
+        "MT-C-LL2 OC",
+        "MT-C-LL2 FL",
+        "MT-C-LL2 FL OC",
+        "MT-C-T/2",
+        "MT-C-T/2 OC",
+        "MT-C-T/2 FL",
+        "MT-C-T/2 FL OC"
+      ]
+    }
+  },
+  {
+    "id": "Q008",
+    "category": "Traversal",
+    "difficulty": "medium",
+    "question": "What is the required installation torque for MT-FL OC?",
+    "reference_cypher_query": "MATCH (c:Connector {designation: 'MT-FL OC'})-[:HAS_TORQUE_CONFIGURATION]->(tc:TorqueConfiguration) RETURN tc.torque",
+    "expected_result": [[40]],
+    "expected_answer_content": {
+      "torque": 40,
+      "unit": "Nm"
+    }
+  },
+  {
+    "id": "Q009",
+    "category": "Traversal",
+    "difficulty": "easy",
+    "question": "What is the coating method for MT-C-LL1 OC?",
+    "reference_cypher_query": "MATCH (c:Connector {designation: 'MT-C-LL1 OC'})-[:HAS_COATING_METHOD]->(cm:CoatingMethod) RETURN cm.name",
+    "expected_result": [["hot dip galvanized"]],
+    "expected_answer_content": {
+      "coating_method": "hot dip galvanized"
+    }
+  },
+  {
+    "id": "Q010",
+    "category": "Traversal",
+    "difficulty": "medium",
+    "question": "What is the torque for MT-TL M10 when using bolt MT-TLB?",
+    "reference_cypher_query": "MATCH (c:Connector {designation: 'MT-TL M10'})-[:HAS_TORQUE_CONFIGURATION]->(tc:TorqueConfiguration)-[:HAS_BOLT]->(b:Bolt {designation: 'MT-TLB'}) RETURN tc.torque",
+    "expected_result": [[30]],
+    "expected_answer_content": {
+      "torque": 30,
+      "unit": "Nm"
+    }
+  },
+  {
+    "id": "Q011",
+    "category": "Traversal",
+    "difficulty": "hard",
+    "question": "What is the characteristic resistance in positive local X direction for MT-C-GS OC when using the channel MT-40D V2 and the channel connector MT-FL?",
+    "reference_cypher_query": "MATCH (c:Connector {designation: 'MT-C-GS OC'})-[:HAS_RESISTANCE_CONFIGURATION]->(rc:ResistanceConfiguration) MATCH (rc)-[:USES_CHANNEL]->(ch:Channel {designation: 'MT-40D V2'}) MATCH (rc)-[:USES_CHANNEL_CONNECTOR]->(cc:Connector {designation: 'MT-FL'}) RETURN rc.fx_positive",
+    "expected_result": [[14.93]],
+    "expected_answer_content": {
+      "fx_positive": 14.93,
+      "unit": "kN"
+    }
+  },
+  {
+    "id": "Q012",
+    "category": "Traversal",
+    "difficulty": "hard",
+    "question": "How many channel connectors do I need to install MT-C-LL2 OC with MT-40D V2 using MT-FL?",
+    "reference_cypher_query": "MATCH (c:Connector {designation: 'MT-C-LL2 OC'})-[:HAS_RESISTANCE_CONFIGURATION]->(rc:ResistanceConfiguration) MATCH (rc)-[:USES_CHANNEL]->(ch:Channel {designation: 'MT-40D V2'}) MATCH (rc)-[usage:USES_CHANNEL_CONNECTOR]->(cc:Connector {designation: 'MT-FL'}) RETURN usage.quantity",
+    "expected_result": [[4]],
+    "expected_answer_content": {
+      "channel_connector_quantity": 4
+    }
+  },
+  {
+    "id": "Q013",
+    "category": "Aggregation",
+    "difficulty": "easy",
+    "question": "What is the maximum yield strength?",
+    "reference_cypher_query": "MATCH (c:Channel) RETURN max(c.fy)",
+    "expected_result": [[350]],
+    "expected_answer_content": {
+      "maximum_yield_strength": 350,
+      "unit": "MPa"
+    }
+  },
+  {
+    "id": "Q014",
+    "category": "Aggregation",
+    "difficulty": "medium",
+    "question": "Which channels have the highest yield strength?",
+    "reference_cypher_query": "MATCH (c:Channel) WITH max(c.fy) AS highest_fy MATCH (c:Channel) WHERE c.fy = highest_fy RETURN c.designation",
+    "expected_result": [
+      ["MT-70 S OC"],
+      ["MT-70 OC"],
+      ["MT-70 S US OC"],
+      ["MT-70 US OC"],
+      ["MT-80 S OC"],
+      ["MT-80 OC"],
+      ["MT-90 S OC"],
+      ["MT-90 OC"],
+      ["MT-90 S US OC"],
+      ["MT-90 US OC"],
+      ["MT-100S OC"],
+      ["MT-100 OC"],
+      ["MT-90H OC"],
+      ["MT-90H S OC"]
+    ],
+    "expected_answer_content": {
+      "designation": [
+        "MT-70 S OC",
+        "MT-70 OC",
+        "MT-70 S US OC",
+        "MT-70 US OC",
+        "MT-80 S OC",
+        "MT-80 OC",
+        "MT-90 S OC",
+        "MT-90 OC",
+        "MT-90 S US OC",
+        "MT-90 US OC",
+        "MT-100S OC",
+        "MT-100 OC",
+        "MT-90H OC",
+        "MT-90H S OC"
+      ]
+    }
+  }
+]
