@@ -32,3 +32,44 @@ The goal is to gain hands-on experience with the main components of a Text-to-Cy
 | Query language         | Cypher               |
 | LLM                    | Qwen3 4B via Ollama  |
 | UI                     | Streamlit            |
+
+## Project Structure
+
+```text
+text-to-cypher-from-scratch/
+├── data/
+│   ├── schema.json
+│   └── data.xlsx
+├── evaluation/
+│   └── golden_set.json
+├── src/
+│   ├── app.py
+│   ├── build_answer_prompt.py
+│   ├── build_cypher_prompt.py
+│   ├── evaluation.py
+│   ├── execute_cypher.py
+│   ├── generate_answer.py
+│   ├── generate_cypher.py
+│   ├── import_data_neo4j.py
+│   ├── main.py
+│   └── test_neo4j_connection.py
+├── .env
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
+
+## File Purpose
+
+| File                     | Purpose                                                                                     |
+| ------------------------ | ------------------------------------------------------------------------------------------- |
+| import_data_neo4j.py     | Imports the Excel data into Neo4j as nodes, properties, and relationships                   |
+| test_neo4j_connection.py | Checks the connection to Neo4j                                                              |
+| build_cypher_prompt.py   | Builds the Cypher generation prompt using the graph schema and user question                |
+| generate_cypher.py       | Sends the prompt to Qwen3 via Ollama and generates the Cypher query                         |
+| execute_cypher.py        | Executes the generated Cypher query against Neo4j and returns the results                   |
+| build_answer_prompt.py   | Builds the answer prompt using the question, Cypher query, query results, and graph schema  |
+| generate_answer.py       | Sends the answer prompt to Qwen3 via Ollama and generates the final natural language answer |
+| evaluation.py            | Evaluates Text-to-Cypher answer accuracy using the golden set                               |
+| main.py                  | Connects and runs the individual steps of the Text-to-Cypher pipeline                       |
+| app.py                   | Provides the Streamlit user interface                                                       |
