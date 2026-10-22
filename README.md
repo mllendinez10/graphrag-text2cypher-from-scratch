@@ -74,3 +74,21 @@ graphrag-text2cypher-from-scratch/
 | evaluation.py            | Evaluates Text2Cypher answer accuracy against the golden set                               |
 | main.py                  | Connects and runs the individual steps of the pipeline                                      |
 | app.py                   | Provides the Streamlit user interface                                                       |
+
+## Evaluation Results
+
+The GraphRAG pipeline using Text2Cypher retrieval is evaluated using the questions in golden_set.json.
+
+Each golden set entry contains:
+
+* A natural language question
+* A difficulty level: easy, medium, or hard
+* The expected answer content
+
+The evaluation script runs every question through the complete pipeline and checks whether all expected answer content is present in the generated answer. A question is counted as correct only if all expected content is present. Questions that cause pipeline errors are counted as incorrect.
+
+The evaluation results are:
+
+* Easy: 8/9 correct
+* Medium: 2/3 correct
+* Hard: 0/2 correct
