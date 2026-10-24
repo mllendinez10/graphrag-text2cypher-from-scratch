@@ -92,3 +92,17 @@ The evaluation results are:
 * Easy: 8/9 correct
 * Medium: 2/3 correct
 * Hard: 0/2 correct
+
+## Project Takeaways
+
+The main insights gained from building and evaluating this GraphRAG pipeline with Text2Cypher retrieval are:
+
+* A clear graph schema, including relationship directions, property descriptions, and units, helps the LLM generate appropriate Cypher queries.
+* Prompt instructions can guide Cypher generation, but they do not guarantee correct queries.
+* Answer accuracy is more meaningful than comparing generated Cypher strings because different queries can return the same correct result.
+* Local LLM inference can be the main performance bottleneck, while Cypher query execution is typically fast for this dataset.
+* A golden set is essential for identifying the strengths and weaknesses of the system.
+* In this evaluation, the pipeline performs well on easy and medium questions but struggles with hard questions involving multiple nodes and relationships.
+
+I initially expected the graph approach to perform better than the relational approach in [text-to-sql-from-scratch](https://github.com/mllendinez10/text-to-sql-from-scratch), because relationship names seemed closer to how users phrase their questions.
+However, both approaches depend on the LLM generating the correct query, and both struggled with questions requiring more complex combinations of data with SQL joins or graph traversals. A meaningful graph model helps describe the data, but does not by itself guarantee reliable query generation.
